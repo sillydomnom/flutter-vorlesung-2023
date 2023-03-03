@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_vorlesung/blocs/counter/counter_bloc.dart';
+import 'package:flutter_vorlesung/widgets/button_section.dart';
 import 'package:flutter_vorlesung/widgets/hit_counter.dart';
 
 void main() {
@@ -31,18 +34,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  late CounterBloc _counterBloc;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-  
-  void _decreaseCounter() {
-    setState(() {
-      _counter--;
-    });
+  @override
+  void initState() {
+    _counterBloc = CounterBloc();
+
+    super.initState();
   }
 
   @override
@@ -52,16 +50,19 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            HitCounter(counter: _counter),
-            const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-            ElevatedButton(onPressed: _incrementCounter, child: const Text('Increment')),
-            const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-            ElevatedButton(onPressed: _decreaseCounter, child: const Text('Decrease')),
-          ],
+      body: BlocProvider(
+        create: (context) => _counterBloc,
+        child: const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              HitCounter(),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: ButtonSection(),
+              ),
+            ],
+          ),
         ),
       ),
     );
