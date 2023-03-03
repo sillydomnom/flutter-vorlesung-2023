@@ -9,7 +9,7 @@
             "request": "launch",
             "type": "dart",
             "args": [
-                "--web-hostname=localhost",
+                "--web-hostname=0.0.0.0",
                 "--web-port=3000"
             ],
             "flutterMode": "release"
