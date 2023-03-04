@@ -44,6 +44,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+    void _refreshCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: Wrap( //will break to another line on overflow
+    floatingActionButton: Wrap( //will break to another line on overflow
     direction: Axis.horizontal, //use vertical to show  on vertical axis
     children: <Widget>[
           Container( 
@@ -82,12 +88,20 @@ class _MyHomePageState extends State<MyHomePage> {
             child: FloatingActionButton(
               onPressed: _decrementCounter,
               tooltip: 'Decrement',
-              child: const Icon(Icons.add),
+              child: const Icon(Icons.remove),
             )
           ), // button second
+          
+          Container( 
+            margin:EdgeInsets.all(10),
+            child: FloatingActionButton(
+              onPressed: _refreshCounter,
+              tooltip: 'Refresh',
+              child: const Icon(Icons.restart_alt),
+            )
+          ), // button third
           ],
-          ),
- // This trailing comma makes auto-formatting nicer for build methods.
+        ),
     );
   }
 }
