@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vorlesung/buttongroup.dart';
+import 'package:flutter_vorlesung/hitcounter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Clicker'),
     );
   }
 }
@@ -32,15 +34,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+  void _changeCounter(int change) {
     setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
+      _counter += change;
     });
   }
 
@@ -58,18 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            ElevatedButton(
-              onPressed: _incrementCounter,
-              child: const Text('Positiv'),
-            ),
-            ElevatedButton(
-              onPressed: _decrementCounter,
-              child: const Text('Negativ'),
-            ),
+            HitCounter(_counter),
+            ButtonGroup(_changeCounter),
           ],
         ),
       ),
