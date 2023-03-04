@@ -127,21 +127,18 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                Expanded(
-                  child: ElevatedButton(
+                  ElevatedButton(
                   style: style,
                   onPressed: _incrementCounter,
                   child: const Text('+')
                   ),
-                ),
-                Expanded(
-                  child: ElevatedButton(
+                  ElevatedButton(
                   style: style,
                   onPressed: _decrementCounter,
                   child: const Text('-'),
                   ),
-                ),
               ],
             ),
           ],
