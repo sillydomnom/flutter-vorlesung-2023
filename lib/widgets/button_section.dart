@@ -13,7 +13,7 @@ class ButtonSection extends StatelessWidget {
       children: [
         ElevatedButton(onPressed: () => counterBloc.add(CounterIncrement()), child: const Text('Increment')),
         const Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-        ElevatedButton(onPressed: () {}, child: const Text('Decrease')),
+        ElevatedButton(onPressed: () => counterBloc.add(CounterDecrease()), child: const Text('Decrease')),
       ],
     );
   }

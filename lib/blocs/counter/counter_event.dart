@@ -8,3 +8,5 @@ abstract class CounterEvent extends Equatable {
 }
 
 class CounterIncrement extends CounterEvent {}
+
+class CounterDecrease extends CounterEvent {}
