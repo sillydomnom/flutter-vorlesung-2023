@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -37,8 +37,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
+
   late CounterBloc _counterBloc;
   late NameBloc _nameBloc;
+
+  final _contentWidgets = <Widget>[
+    _HomeContent(),
+    const Text('Weather'),
+    const Text('Stuff'),
+  ];
 
   @override
   void initState() {
@@ -46,6 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
     _nameBloc = NameBloc();
 
     super.initState();
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -61,23 +75,48 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sunny),
+            label: 'Weather',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.folder),
+            label: 'Stuff',
+          ),
+          ],
+          onTap: _onItemTapped,
+          currentIndex: _selectedIndex,
+        ),
         body: BlocProvider(
           create: (context) => _counterBloc,
-          child: const Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                HitCounter(),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: ButtonSection(),
-                ),
-                NameField(),
-              ],
-            ),
+          child: Center(
+            child: _contentWidgets.elementAt(_selectedIndex),
           ),
         ),
       ),
+    );
+  }
+}
+
+class _HomeContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        HitCounter(),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          child: ButtonSection(),
+        ),
+        NameField(),
+      ],
     );
   }
 }
