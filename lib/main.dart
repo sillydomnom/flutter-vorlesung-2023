@@ -4,6 +4,7 @@ import 'package:flutter_vorlesung/blocs/counter/counter_bloc.dart';
 import 'package:flutter_vorlesung/widgets/button_section.dart';
 import 'package:flutter_vorlesung/widgets/hit_counter.dart';
 import 'package:flutter_vorlesung/widgets/name_field.dart';
+import 'package:flutter_vorlesung/widgets/pages/todo_page.dart';
 
 import 'blocs/name/name_bloc.dart';
 
@@ -44,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _contentWidgets = <Widget>[
     _HomeContent(),
-    const Text('Todo'),
+    TodoPage(),
     const Text('Stuff'),
   ];
 
