@@ -107,9 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
 class _HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
+      children: const <Widget>[
         HitCounter(),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 5),
