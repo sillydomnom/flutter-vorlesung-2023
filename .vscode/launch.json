@@ -12,7 +12,7 @@
                 "--web-hostname=0.0.0.0",
                 "--web-port=3000"
             ],
-            "flutterMode": "release"
+            "flutterMode": "debug"
         },
         {
             "name": "flutter-vorlesung-2023 (profile mode)",

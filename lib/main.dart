@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _contentWidgets = <Widget>[
     _HomeContent(),
-    const Text('Weather'),
+    const Text('Todo'),
     const Text('Stuff'),
   ];
 
@@ -82,8 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.sunny),
-            label: 'Weather',
+            icon: Icon(Icons.task_alt),
+            label: 'Todo',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.folder),
