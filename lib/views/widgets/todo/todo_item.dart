@@ -10,9 +10,9 @@ class TodoItem extends StatelessWidget {
     return Card(
       child: ListTile(
         title: Text(todo.title),
-        leading: todo.done
-          ? const Icon(Icons.check, color: Colors.green)
-          : const Icon(Icons.question_mark, color: Colors.grey),
+        trailing: todo.done
+          ? const Icon(Icons.check_box, color: Colors.green)
+          : const Icon(Icons.check_box_outline_blank, color: Colors.grey),
       ),
     );
   }

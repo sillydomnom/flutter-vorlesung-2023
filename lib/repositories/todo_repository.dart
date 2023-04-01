@@ -8,7 +8,7 @@ class TodoRepository {
     final response = await http.get(Uri.https('dummyjson.com', 'todos'));
     if (response.statusCode == 200) {
       var responseJson = json.decode(response.body);
-      return (responseJson['todos'] as List).map((elem) => Todo.fromJson(elem)).toList();
+      return (responseJson['todos'] as List<dynamic>).map((elem) => Todo.fromJson(elem)).toList();
     }
     return [];
   }

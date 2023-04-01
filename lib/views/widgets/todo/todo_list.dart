@@ -8,10 +8,12 @@ class TodoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: list.map((elem) => TodoItem(todo: elem)).toList(),
-      ),
+    return ListView.builder(
+      itemCount: list.length,
+      itemBuilder: (BuildContext context, int index) {
+        return TodoItem(todo: list[index]);
+      },
+      controller: ScrollController(),
     );
   }
 }
