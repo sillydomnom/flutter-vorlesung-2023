@@ -35,6 +35,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late CounterBloc _counterBloc;
+  String? appTitle;
 
   @override
   void initState() {
@@ -48,19 +49,27 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(appTitle ?? "Standard Title"),
       ),
       body: BlocProvider(
         create: (context) => _counterBloc,
-        child: const Center(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              HitCounter(),
-              Padding(
+              const HitCounter(),
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 5),
                 child: ButtonSection(),
               ),
+              TextField(
+                decoration: const InputDecoration(labelText: "App Title"),
+                onChanged: (value) {
+                  setState(() {
+                    appTitle = value;
+                  });
+                },
+              )
             ],
           ),
         ),
