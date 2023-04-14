@@ -15,7 +15,7 @@ class TodoPage extends StatelessWidget {
           if (snapshot.hasData) {
             return SingleChildScrollView(
               child: Column(
-                children: snapshot.data?.map((e) => _TodoElement(e)).toList() ?? [],
+                children: snapshot.data?.todos.map((e) => _TodoElement(e)).toList() ?? [],
               ),
             );
           }
